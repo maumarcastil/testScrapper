@@ -21,6 +21,7 @@ const { chromium } = require("playwright-chromium");
   const context = await browser.newContext();
   const page = await context.newPage();
   await page.goto("https://artsandculture.google.com/category/artist?tab=az&date=2000&pr=W");
-  await page.screenshot({ path: `src/example-chromium.png` });
+  const buffer = await page.screenshot();
+  console.log(buffer.toString('base64'));
   await browser.close();
 })();
